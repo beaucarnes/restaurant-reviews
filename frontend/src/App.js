@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,14 +8,14 @@ import RestaurantsList from "./components/restaurants-list";
 import Login from "./components/login";
 
 function App() {
-  const [user, setUser] = React.useState(null);
+  const [user, setUser] = useState(null);
 
   async function login(user = null) {
     setUser(user);
   }
 
   async function logout() {
-    setUser(null)
+    setUser(null);
   }
 
   return (
@@ -30,41 +30,43 @@ function App() {
               Restaurants
             </Link>
           </li>
-          <li className="nav-item" >
-            { user ? (
-              <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
+          <li className="nav-item">
+            {user ? (
+              <a
+                href="/#"
+                onClick={logout}
+                className="nav-link"
+                style={{ cursor: "pointer" }}
+              >
                 Logout {user.name}
               </a>
-            ) : (            
-            <Link to={"/login"} className="nav-link">
-              Login
-            </Link>
+            ) : (
+              <Link to={"/login"} className="nav-link">
+                Login
+              </Link>
             )}
-
           </li>
         </div>
       </nav>
 
       <div className="container mt-3">
         <Switch>
-          <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
-          <Route 
+          <Route
+            exact
+            path={["/", "/restaurants"]}
+            component={RestaurantsList}
+          />
+          <Route
             path="/restaurants/:id/review"
-            render={(props) => (
-              <AddReview {...props} user={user} />
-            )}
+            render={(props) => <AddReview {...props} user={user} />}
           />
-          <Route 
+          <Route
             path="/restaurants/:id"
-            render={(props) => (
-              <Restaurant {...props} user={user} />
-            )}
+            render={(props) => <Restaurant {...props} user={user} />}
           />
-          <Route 
+          <Route
             path="/login"
-            render={(props) => (
-              <Login {...props} login={login} />
-            )}
+            render={(props) => <Login {...props} login={login} />}
           />
         </Switch>
       </div>
