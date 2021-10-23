@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./bootstrap/dist/css/bootstrap.min.css";
 
 import AddReview from "./components/add-review";
 import Restaurant from "./components/restaurants";
@@ -72,4 +72,15 @@ function App() {
   );
 }
 
+
+// function test(){
+//   let a =  20;
+
+//   function temp(){
+//     let c = this.a + 2
+//     return c
+//   }
+
+//   return temp()
+// }
 export default App;
