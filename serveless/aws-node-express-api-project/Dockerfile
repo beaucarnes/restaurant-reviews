@@ -10,8 +10,9 @@ RUN npm install
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
 CMD [ "handler.handler" ]  
 
-RUN npm install -g serverless
-RUN serverless offline start
+# RUN npm install -g serverless
+# RUN serverless offline start
+
 # COPY ./entry_script.sh /entry_script.sh
 # ADD aws-lambda-rie-arm64 /usr/local/bin/aws-lambda-rie
 # RUN sudo
