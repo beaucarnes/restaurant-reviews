@@ -1,0 +1,19 @@
+org: arvey
+app: aws-node-express-api-project
+service: aws-node-express-api-project
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - httpApi: '*'
+
+
+plugins:
+  - serverless-offline
